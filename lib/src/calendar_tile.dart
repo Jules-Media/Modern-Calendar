@@ -1,4 +1,4 @@
-library components;
+library modern_calendar;
 
 import 'package:flutter/material.dart';
 import 'package:helpful_extensions/helpful_extensions.dart' show Weekday;
@@ -11,7 +11,7 @@ final class CalendarTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return DecoratedBox(
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         //backgroundBlendMode: BlendMode.hue,
         shape: BoxShape.rectangle,
       ),

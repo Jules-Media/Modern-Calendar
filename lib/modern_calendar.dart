@@ -1,4 +1,4 @@
 library modern_calendar;
 
-export 'src/Mobile/CalendarMobileView.dart';
-export 'src/Desktop/CalendarDesktopView.dart';
+export 'src/Desktop/calendar_desktop_view.dart';
+export 'src/Mobile/calendar_mobile_view.dart';
