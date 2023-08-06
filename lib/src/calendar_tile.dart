@@ -1,7 +1,8 @@
 library modern_calendar;
 
 import 'package:flutter/material.dart';
-import 'package:helpful_extensions/helpful_extensions.dart' show Weekday;
+import 'package:helpful_extensions/helpful_extensions.dart'
+    show WeekdayExtension;
 
 final class CalendarTile extends StatelessWidget {
   const CalendarTile({required this.date, super.key});
@@ -22,7 +23,7 @@ final class CalendarTile extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         verticalDirection: VerticalDirection.down,
         children: [
-          Text(date.weekdayAsString),
+          Text(date.weekdayAsEnum.abbreviation),
           Text(date.day.toString()),
         ],
       ),

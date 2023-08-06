@@ -19,7 +19,7 @@ final class CalendarMobileView extends StatefulWidget {
 final class _CalendarMobileViewState extends State<CalendarMobileView> {
   /// Page Controller to this Page View
   final PageController _pageController = PageController(
-    initialPage: 0,
+    initialPage: 2,
     keepPage: true,
   );
 

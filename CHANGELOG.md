@@ -1,3 +1,39 @@
+## 0.0.15
+
+* Bugfix
+
+## 0.0.14
+
+* Bugfix
+
+## 0.0.13
+
+* Update display of weekdays
+
+## 0.0.12
+
+* Update UI
+
+## 0.0.11
+
+* Try something
+
+## 0.0.10
+
+* Try something
+
+## 0.0.9
+
+* Bugfix
+
+## 0.0.8
+
+* Implement Weekdays in table
+
+## 0.0.7
+
+* Update some things & try again
+
 ## 0.0.6
 
 * Update some things & try again
