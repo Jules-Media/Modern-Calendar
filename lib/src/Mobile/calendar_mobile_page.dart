@@ -21,6 +21,7 @@ final class CalendarMobilePage extends StatelessWidget {
       mainAxisSize: MainAxisSize.max,
       verticalDirection: VerticalDirection.down,
       children: [
+        Text(_dates[0].monthAsEnum.completeName),
         Row(
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.spaceAround,

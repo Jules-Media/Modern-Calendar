@@ -17,9 +17,13 @@ final class CalendarMobileView extends StatefulWidget {
 }
 
 final class _CalendarMobileViewState extends State<CalendarMobileView> {
+  static const int _initialPage = 2;
+
+  int _numberOfActivelyRenderedPages = 5;
+
   /// Page Controller to this Page View
   final PageController _pageController = PageController(
-    initialPage: 2,
+    initialPage: _initialPage,
     keepPage: true,
   );
 
@@ -36,14 +40,6 @@ final class _CalendarMobileViewState extends State<CalendarMobileView> {
     } else {
       final List<DateTime> currentMonth =
           _generateDatesForMonth(_currentMonth, _currentYear);
-      final List<DateTime> previousMonth = _generateDatesForMonth(
-        _currentMonth - 1 < 1 ? 12 : _currentMonth - 1,
-        _currentMonth - 1 < 1 ? _currentYear - 1 : _currentYear,
-      );
-      final List<DateTime> nextMonth = _generateDatesForMonth(
-        _currentMonth + 1 > 12 ? 0 : _currentMonth + 1,
-        _currentYear + 1 > 12 ? _currentYear + 1 : _currentYear,
-      );
       return PageView.builder(
         allowImplicitScrolling: true,
         controller: _pageController,
@@ -53,11 +49,18 @@ final class _CalendarMobileViewState extends State<CalendarMobileView> {
         clipBehavior: Clip.antiAliasWithSaveLayer,
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
-        // 5 to always render the current page + 2 in every direction
-        itemCount: 5,
-        onPageChanged: (newMonth) {
+        itemCount: _numberOfActivelyRenderedPages,
+        onPageChanged: (newPage) {
+          _numberOfActivelyRenderedPages++;
           setState(() {
-            _currentMonth = newMonth;
+            _currentMonth += newPage;
+            if (_currentMonth > 12) {
+              _currentMonth -= 12;
+              _currentYear++;
+            } else if (_currentMonth < 1) {
+              _currentMonth += 12;
+              _currentYear--;
+            }
           });
         },
         itemBuilder: (_, __) {
