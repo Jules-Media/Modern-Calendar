@@ -1,6 +1,6 @@
 name: modern_calendar
 description: A simple and modern calendar package for Flutter
-version: 0.0.15
+version: 0.0.20
 repository: https://github.com/Jules-Media/Modern-Calendar
 
 environment:

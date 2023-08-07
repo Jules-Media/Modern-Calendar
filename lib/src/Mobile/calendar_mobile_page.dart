@@ -12,8 +12,9 @@ final class CalendarMobilePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isFirstDayOfMonth = true;
-    int weekday = 1;
+    int numberOfDaysBeforeCount =
+        Weekday.values.indexOf(_dates[0].weekdayAsEnum);
+    final int numberOfDaysBefore = numberOfDaysBeforeCount;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.start,
@@ -47,15 +48,12 @@ final class CalendarMobilePage extends StatelessWidget {
             crossAxisCount: 7,
           ),
           itemBuilder: (_, day) {
-            final DateTime date = _dates[day];
-            if (isFirstDayOfMonth &&
-                date.weekdayAsEnum != Weekday.values[weekday]) {
-              day--;
+            if (numberOfDaysBeforeCount > 0) {
+              numberOfDaysBeforeCount--;
               return Container();
             } else {
-              // TODO: Maybe optimize
-              isFirstDayOfMonth = false;
-              return CalendarTile(date: date);
+              day -= numberOfDaysBefore;
+              return CalendarTile(date: _dates[day]);
             }
           },
         ),

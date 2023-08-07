@@ -1,3 +1,24 @@
+## 0.0.20
+
+* Bugfix
+* First version that is working as intended
+
+## 0.0.19
+
+* Bugfix
+
+## 0.0.18
+
+* Update Calendar view (Weekday ordering) again
+
+## 0.0.17
+
+* Update Calendar view (Weekday ordering) again
+
+## 0.0.16
+
+* Update Calendar view (Weekday ordering)
+
 ## 0.0.15
 
 * Bugfix
