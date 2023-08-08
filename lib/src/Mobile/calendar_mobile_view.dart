@@ -17,9 +17,13 @@ final class CalendarMobileView extends StatefulWidget {
 }
 
 final class _CalendarMobileViewState extends State<CalendarMobileView> {
-  static const int _initialPage = 2;
+  /// The initial Page on which
+  /// the Page Controller starts
+  static const int _initialPage = 1;
 
-  int _numberOfActivelyRenderedPages = 5;
+  int _numberOfActivelyRenderedPages = 3;
+
+  bool _reverse = false;
 
   /// Page Controller to this Page View
   final PageController _pageController = PageController(
@@ -50,10 +54,16 @@ final class _CalendarMobileViewState extends State<CalendarMobileView> {
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
         itemCount: _numberOfActivelyRenderedPages,
+        reverse: _reverse,
         onPageChanged: (newPage) {
-          _numberOfActivelyRenderedPages++;
           setState(() {
-            _currentMonth += newPage;
+            if (newPage > _pageController.page!) {
+              _reverse = false;
+            } else {
+              _reverse = true;
+            }
+            _numberOfActivelyRenderedPages++;
+            _currentMonth += (newPage - _initialPage);
             if (_currentMonth > 12) {
               _currentMonth -= 12;
               _currentYear++;

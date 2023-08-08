@@ -1,3 +1,15 @@
+## 0.0.27d
+
+* Try some stuff
+
+## 0.0.26
+
+* Try some stuff
+
+## 0.0.25
+
+* Try some stuff
+
 ## 0.0.24
 
 * Try some stuff
