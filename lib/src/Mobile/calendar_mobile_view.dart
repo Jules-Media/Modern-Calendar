@@ -19,23 +19,28 @@ final class CalendarMobileView extends StatefulWidget {
 final class _CalendarMobileViewState extends State<CalendarMobileView> {
   /// The initial Page on which
   /// the Page Controller starts
-  static const int _initialPage = 1;
-
-  int _numberOfActivelyRenderedPages = 3;
-
-  bool _reverse = false;
+  /// This is calculated through the last year (current Year - 1)
+  /// times 12, so yuo get the number of month up to silvester last year,
+  /// and then add the number of month passed by in this year
+  static final int _initialPage =
+      (DateTime.now().year - 1) * 12 + DateTime.now().month;
 
   /// Page Controller to this Page View
-  final PageController _pageController = PageController(
+  static final PageController _pageController = PageController(
     initialPage: _initialPage,
     keepPage: true,
   );
 
+  /// the number of pages that are already rendered.
+  /// This is the initial Page plus 2 by default.
+  /// It's going up as you scroll through the Pages.
+  static int _numberOfRenderedPages = _initialPage + 2;
+
   /// The current Month to show in this Calendar View
-  int _currentMonth = DateTime.now().month;
+  static int _currentMonth = DateTime.now().month;
 
   /// The current Year which is to show in this View
-  int _currentYear = DateTime.now().year;
+  static int _currentYear = DateTime.now().year;
 
   @override
   Widget build(BuildContext context) {
@@ -53,17 +58,14 @@ final class _CalendarMobileViewState extends State<CalendarMobileView> {
         clipBehavior: Clip.antiAliasWithSaveLayer,
         scrollDirection: Axis.horizontal,
         physics: const BouncingScrollPhysics(),
-        itemCount: _numberOfActivelyRenderedPages,
-        reverse: _reverse,
+        itemCount: _numberOfRenderedPages,
         onPageChanged: (newPage) {
           setState(() {
             if (newPage > _pageController.page!) {
-              _reverse = false;
+              _currentMonth++;
             } else {
-              _reverse = true;
+              _currentMonth--;
             }
-            _numberOfActivelyRenderedPages++;
-            _currentMonth += (newPage - _initialPage);
             if (_currentMonth > 12) {
               _currentMonth -= 12;
               _currentYear++;
@@ -71,6 +73,7 @@ final class _CalendarMobileViewState extends State<CalendarMobileView> {
               _currentMonth += 12;
               _currentYear--;
             }
+            _numberOfRenderedPages++;
           });
         },
         itemBuilder: (_, __) {

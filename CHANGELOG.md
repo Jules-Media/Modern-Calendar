@@ -1,4 +1,33 @@
-## 0.0.27d
+# 1.0.0
+
+* First Version to work as intended
+* Minimal Functionality, but calendar view is working
+
+## 0.0.33
+
+* Small Bugfix
+
+## 0.0.32
+
+* Small Bugfix
+
+## 0.0.31
+
+* Try some stuff
+
+## 0.0.30
+
+* Try some stuff
+
+## 0.0.29
+
+* Try some stuff
+
+## 0.0.28
+
+* Try some stuff
+
+## 0.0.27
 
 * Try some stuff
 
