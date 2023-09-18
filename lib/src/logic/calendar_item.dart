@@ -1,6 +1,7 @@
 library modern_calendar;
 
 import 'package:flutter/material.dart' show Color, Colors;
+import 'package:modern_calendar/src/logic/location.dart' show Location;
 
 abstract class CalendarItem {
   const CalendarItem({
@@ -30,5 +31,5 @@ class DefaultCalendarItem extends CalendarItem {
 
   final String? notes;
 
-  final String? location;
+  final Location? location;
 }
